@@ -1,0 +1,21 @@
+CHANGELOG REGISTRAR
+Date: 2026-05-05
+
+- UX: Modal de registro atualizado para incluir os campos NOME (único nome), RECRUTADOR (entrada de texto), ID (numérico) e TELEFONE (formato aceito). Implementada validação para que NOME seja apenas um nome (sem espaços).
+- Fluxo de envio: ao submeter o modal, uma mensagem de avaliação é enviada para o canal 1321697489530916877 com um embed contendo CANDIDATO, RECRUTADOR, ID, TELEFONE e QUEM RECRUTOU, com o status APROVADO/NEGADO inicial como Aguardando.
+- Botões embutidos: adicionados dois botões dentro do container de avaliação para Aprovar e Negar; ao clicar, a mensagem de avaliação é atualizada para refletir o estado (APROVADO/NEGADO) e os botões são removidos.
+- Implementados handlers para os botões approve-registro e deny-registro para atualizar o status no embed e limpar os botões.
+- Implementação de logs de depuração para facilitar o diagnóstico de falhas (ex.: fluxo de registro, seleção de recrutador, ações de aprovação/negação).
+- Testes: adicionados testes unitários para validar Nome (único) e Telefone, atualizados para refletir a nova regra de Nome.
+- Reforçada a validação de Nome para emitir mensagem clara quando o nome não cumprir a regra (Nome inválido. Use apenas letras em um único nome).
+- Ajuste de placeholders e labels no modal para refletir a nova UX (Ex.: NOME placeholder passou a exemplificar um único nome).
+
+Arquivos/modificações principais:
+- REGISTRAR/src/discord/commands/public/registrar.ts
+- REGISTRAR/src/validators/registro.ts
+- REGISTRAR/test/validators/registro.test.ts
+- REGISTRAR/package.json (scripts de testes e vitest)
+- REGISTRAR/vitest.config.ts
+- REGISTRAR/changelogs (este arquivo)
+
+Observação: este changelog resume as mudanças feitas hoje; se desejar, posso adicionar seções adicionais (como instruções de build/deploy, notas de migração, ou capturas de tela).
