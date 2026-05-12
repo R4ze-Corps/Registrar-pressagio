@@ -14,7 +14,6 @@ import {
     TextDisplayBuilder
 } from "discord.js";
 import { configCentral } from "#functions";
-import { authorizedUsers } from "./iniciar.js";
 
 let registrarSessions: Map<string, { selectedUser?: string; candidateId?: string; candidateName?: string; userId?: string }> = new Map();
 
@@ -23,13 +22,6 @@ createCommand({
     description: "Inicia o sistema de registro.",
     type: ApplicationCommandType.ChatInput,
     async run(interaction) {
-        if (!authorizedUsers.has(interaction.user.id)) {
-            await interaction.reply({ 
-                content: "❌ Você precisa ativar o sistema primeiro usando `/iniciar` com uma key válida.", 
-                ephemeral: true 
-            });
-            return;
-        }
         await interaction.reply(await registrarMenu());
     }
 });

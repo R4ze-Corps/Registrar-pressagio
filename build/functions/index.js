@@ -1,2 +1,1 @@
-export {};
-// export functions here
+export { configCentral } from "./ConfigCentral.js";

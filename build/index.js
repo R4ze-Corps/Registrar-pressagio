@@ -1,3 +1,11 @@
 import { env } from "#env";
 import { bootstrap } from "@constatic/base";
-await bootstrap({ meta: import.meta, env });
+import { GatewayIntentBits } from "discord.js";
+await bootstrap({
+    meta: import.meta,
+    env,
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers
+    ]
+});
